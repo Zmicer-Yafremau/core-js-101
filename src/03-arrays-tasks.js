@@ -466,8 +466,13 @@ function sortCitiesArray(arr) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  function fkEsLint(a, b) {
+    return a === b ? 1 : 0;
+  }
+  return [...Array(n)].map(() => [...Array(n)])
+    .map((elDeep, index) => elDeep
+      .map((...arg) => fkEsLint(index, arg[1])));
 }
 
 /**
@@ -483,8 +488,8 @@ function getIdentityMatrix(/* n */) {
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  return [...Array(end - start + 1)].map((...arg) => start + arg[1]);
 }
 
 /**
@@ -498,8 +503,8 @@ function getIntervalArray(/* start, end */) {
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  return [...new Set(arr)];
 }
 
 /**
@@ -590,8 +595,12 @@ function getElementByIndexes(/* arr, indexes */) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  const middle = arr[Math.ceil((arr.length - 1) / 2)];
+  const start = arr.slice(middle, arr.length);
+  const end = arr.slice(0, middle - 1);
+  if (arr.length % 2) return [...start, middle, ...end];
+  return [middle, ...start, ...end];
 }
 
 
