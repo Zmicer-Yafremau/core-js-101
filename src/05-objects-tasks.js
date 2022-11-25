@@ -143,8 +143,58 @@ const cssSelectorBuilder = {
   combine(/* selector1, combinator, selector2 */) {
     throw new Error('Not implemented');
   },
+
 };
 
+/*
+
+const cssSelectorBuilder = {
+  str:'',
+  strTemp:'',
+  comb:'',
+  element(value) {
+    this.str += value;
+    return this;
+  },
+
+  id(value) {
+    this.str += `#${value}`;
+    return this;
+  },
+
+  class(value) {
+     this.str += `.${value}`;
+    return this;
+  },
+
+  attr(value) {
+     this.str += `[${value}]`;
+     return this;
+  },
+
+  pseudoClass(value) {
+     this.str += `:${value}`;
+    return this;
+  },
+
+  pseudoElement(value) {
+     this.str += `::${value}`;
+    return this;
+  },
+
+  combine(selector1, combinator, selector2) {
+    this.comb += selector1.str;
+   this.str += `${selector1.stringify()} ${combinator} ${selector2.stringify()}`;
+   return this;
+  },
+  stringify() {
+    this.strTemp = this.str;
+    this.str = '';
+    return this.strTemp;
+  }
+};
+
+*/
 
 module.exports = {
   Rectangle,

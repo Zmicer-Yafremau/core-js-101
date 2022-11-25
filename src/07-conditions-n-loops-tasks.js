@@ -466,8 +466,29 @@ function getMatrixProduct(/* m1, m2 */) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  const o = JSON.stringify(['X', 'X', 'X']);
+  const x = JSON.stringify(['0', '0', '0']);
+  let res;
+  let fkLintres;
+  position.forEach((elArr) => {
+    if (JSON.stringify(elArr) === o
+      || JSON.stringify(elArr) === x) [res] = elArr;
+  });
+  for (let i = 0; i < 3; i += 1) {
+    if (JSON.stringify([position[0][i], position[1][i], position[2][i]]) === o
+      || JSON.stringify([position[0][i],
+        position[1][i], position[2][i]]) === x) res = position[0][i];
+  }
+  if (JSON.stringify([position[0][0], position[1][1], position[2][2]]) === o
+    || JSON.stringify([position[0][0], position[1][1], position[2][2]]) === x
+    || JSON.stringify([position[0][2], position[1][1], position[2][0]]) === x
+    || JSON.stringify([position[0][2],
+      position[1][1], position[2][0]]) === o) {
+    [, fkLintres] = position;
+    [, res] = fkLintres;
+  }
+  return res;
 }
 
 
